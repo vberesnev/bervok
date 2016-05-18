@@ -1,0 +1,37 @@
+{% extends 'news/base.html' %}
+
+    {% block content %}
+        <div class="post">
+            {% if post.published_date %}
+                <div class="date">
+                    {{ post.published_date }}
+                </div>
+            {% endif %}
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+             <a class="btn btn-default" href="{% url 'post_dlt' pk=post.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
+            <h1>{{ post.title }}</h1>
+            <p>{{ post.text|linebreaks }}</p>
+            <div class = "comment-list">
+                <ul>
+                    {% for comment in post.comment_set.all %}
+                        <li>
+                            <h4>{{ comment.author}}</h4> 
+                             <div class="date">
+                                {{ comment.published_date }}
+                            </div>
+                            <p> {{ comment.text }}</p>
+                            <a class="btn btn-default" href="{% url 'comment_dlt' pk=post.pk id=comment.id  %}"><span class="glyphicon glyphicon-trash"></span></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div> 
+            <div class = "comment-add">
+                Введи свой комментарий
+                <form action = "{% url 'comment_new' pk=post.pk %}" method="POST" class="comment-form">
+                    {% csrf_token %}  
+                    {{form.as_p}}
+                    <button type="submit" class="save btn btn-default">Отправить</button>
+                </form>            
+            </div>   
+        </div>
+    {% endblock %}

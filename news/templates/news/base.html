@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+         <link href="https://fonts.googleapis.com/css?family=Russo One&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/news.css' %}">
+		<title>Новости</title>
+    </head>
+    <body>
+        <div class="header page-header">
+            <div id='logo'>
+                <h2><a href="/">DjangoNews</a></h2>
+            </div>
+            <div id="menu">
+                <ul>
+                    <li>Новости</li>
+                    <li>Люди</li>
+                    <li>Места</li>
+                    <li>Блоги</li>
+                </ul>    
+            </div>
+            <div id='auth'>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'loginsys.views.logout' %}"> {{username}}, выйти </a>
+                {% else %}
+                    <a href="{% url 'loginsys.views.login' %}"> Войти </a>    
+                {% endif %}
+            </div> 
+        </div>
+        <p><a href="{% url 'news.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus" style="color:red"> </span> 
+        </a> </p>
+        <div class="content container">
+            <div class="row">
+                <div class="news-list col-lg-9 col-md-9 col-sm-9 col-xs-12" >
+                    {% block content %}
+                    {% endblock %}
+
+                    {% block login %}
+                    {% endblock %}
+                </div>
+                <div class="sidebar col-lg-3 col-md-3 col-sm-3 col-xs-12" >
+                    Здесь будут список блогов и комментов
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

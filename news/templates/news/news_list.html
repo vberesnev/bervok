@@ -1,0 +1,25 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post panel panel-default" >
+           
+            <div class="panel-heading">
+            	<h4><a href="{% url 'post_detail' pk=post.pk %}" class="post_title">{{ post.title }}</a></h4>
+            </div>
+            <div>
+            	<span class="post_author">Автор: {{ post.author }} </span>
+            	<span class="post_date">  {{ post.published_date }} </span>
+            </div>
+            <div class="intro">
+            	<a href="{% url 'post_detail' pk=post.pk %}">
+            		<img src="/static/img/news_img/pic.jpg" class="img-responsive img-circle" >
+            	</a>	
+            </div>
+            <div class="preview panel-body">
+           		{{ post.text|linebreaks }}
+           		<span> <a href="{% url 'post_detail' pk=post.pk %}"> Подробнее... </a></span>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}

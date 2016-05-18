@@ -1,0 +1,48 @@
+body {text-align: center;}
+
+a:visited, a:active, a:hover {text-decoration: none}
+
+h2, h3, h4 {margin: 0 0 0 0; padding: 0 0 0 0;}
+
+.header { background-color: #202020; margin-top: 0; padding: 0; height:50px;}
+
+.header #logo {float: left;  height:100%; padding: 0 10px 10px 10px; background-color: #202020; border: 4px solid #202020;}
+.header #logo>h2 {font-family: 'Lobster', cursive; }
+
+.header #auth {float: right; height:100%; padding: 0 10px 10px 10px; background-color: #202020; border: 4px solid #202020;}
+
+.header #logo a, .page-header #logo a:visited, .page-header #logo a:active, .page-header #auth a, .page-header #auth a:visited, .page-header #auth a:active {color: #ffffff; text-decoration: none;}
+
+.header #logo:hover, .page-header #auth:hover {background-color: #FFFFFF;} 
+.header #logo:hover h2>a, .page-header #auth:hover a{color: #202020;}
+
+.header #menu {float: left;  height:100%; }
+.header #menu ul {list-style: none; height:100%; font-size: 22px;}
+.header #menu ul li {float: left; padding: 5px 10px 5px 10px; background-color:  #202020; border: 4px solid #202020; color: #ffffff; font-family: 'Lobster';}
+.header #menu ul li:hover {background-color: #FFFFFF; color: #202020;}
+
+
+.news-list {padding: 0 10px 0 0;}
+
+.sidebar {padding: 0 0 0 0; }
+
+.post {display: inline-block; vertical-align: middle; margin: 5px 5px; width: 100%; max-width: 250px;}
+
+.post .panel-heading {background-image: none;}
+.post .panel-heading h4 a {color: #202020; font-family: 'Lobster';}
+
+.post .post_author {float: left; padding: 2px 5px; font-size: 10px;}
+
+.post .post_date {float: right; padding:2px 5px; color: #828282; font-size: 10px}
+
+.post .preview {text-align: left;}
+
+
+
+.save {float: right;}
+
+.post-form textarea, .post-form input {width: 100%;}
+
+
+
+.login-form textarea, .post-form input {width: 100%;}

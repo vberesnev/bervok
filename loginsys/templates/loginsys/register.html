@@ -1,0 +1,18 @@
+{% extends 'news/base.html' %}
+	
+	{% block login %}
+
+	<h1>Регистрация</h1>
+
+	<div class="lagre-offset-3 lagre-6 colums">
+		<form method="POST">
+    		{% csrf_token %}
+        
+    		{{ form }}
+
+        	<input class="button" type="submit" value="Зарегестрироваться"> 
+    	</form>
+	</div> 	
+    
+
+	{% endblock %}

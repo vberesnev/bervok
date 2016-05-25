@@ -2,11 +2,11 @@
 
 {% block login %}
     <h1>Выполните вход</h1>
-    <form method="POST" class="login-form">
+    <form  method="POST" class="login-form">
     	{% csrf_token %}
         
     	<label for="username">Имя пользователя </label>
-    	<input type="taxt" name="username"> </input>
+    	<input type="text" name="username"> </input>
     	<label for="password"> Пароль </label>
     	<input type="password" name="password"> </input>
     	{% if login_error %}
@@ -14,5 +14,8 @@
         {% endif %}    
 
         <button type="submit" class="save btn btn-default">Войти</button>
+
+         <div class="label round secondary"> <a href="/register/">Регистрация</a> </div> 
     </form>
+   
 {% endblock %}

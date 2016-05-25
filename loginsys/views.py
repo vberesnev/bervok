@@ -1,10 +1,11 @@
-from django.shortcuts import render, get_object_or_404
-from django.shortcuts import redirect
+from django.shortcuts import render, render_to_response, redirect, get_object_or_404
 from django.contrib import auth
+from django.contrib.auth.forms import UserCreationForm
+from django.core.context_processors import csrf
 
 def login(request):
     args = {}
-    #args.update(csrf(request))
+    args.update(csrf(request))
     if request.POST:
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
@@ -23,4 +24,17 @@ def logout(request):
     auth.logout(request)
     return redirect ('/')
 
-
+def register(request):
+    args = {}
+    args.update(csrf(request))
+    args['form'] = UserCreationForm()
+    if request.POST:
+        newuser_form = UserCreationForm(request.POST)
+        if newuser_form.is_valid():
+            newuser_form.save()
+            newuser = auth.authenticate(username = newuser_form.cleaned_data['username'], password = newuser_form.cleaned_data['password2'])
+            auth.login(request, newuser)
+            return redirect('/')
+        else:
+            args['form'] = newuser_form
+    return render_to_response('loginsys/register.html', args)            

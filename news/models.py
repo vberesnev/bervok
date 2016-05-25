@@ -5,12 +5,13 @@ from django.utils import timezone
 # Create your models here.
 
 class Post(models.Model):
-    author = models.ForeignKey('auth.User')
-    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
     text = models.TextField()
     created_date = models.DateTimeField(
             default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    preview = models.CharField(max_length=200)
 
     def publish(self):
         self.published_date = timezone.now()
@@ -20,7 +21,7 @@ class Post(models.Model):
         return self.title
 
 
-class Comment(models.Model):
+"""class Comment(models.Model):
     post = models.ForeignKey('Post')
     author = models.CharField(max_length=50)
     text = models.TextField()
@@ -31,4 +32,4 @@ class Comment(models.Model):
         self.save()  
         
     def __str__(self):
-        return self.text    
+        return self.text    """

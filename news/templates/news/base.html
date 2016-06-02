@@ -15,10 +15,10 @@
             </div>
             <div id="menu">
                 <ul>
-                    <li>Новости</li>
-                    <li>Люди</li>
-                    <li>Места</li>
-                    <li>Блоги</li>
+                    <li><a href="{% url 'news.views.post_by_category' category='news' %}">Новости</a></li>
+                    <li><a href="{% url 'news.views.post_by_category' category='people' %}">Люди</a></li>
+                    <li><a href="{% url 'news.views.post_by_category' category='places' %}">Места</a></li>
+                    <li><a href="{% url 'news.views.post_by_category' category='blogs'  %}">Блоги</a></li>
                 </ul>    
             </div>
             <div id='auth'>

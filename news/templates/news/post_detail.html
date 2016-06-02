@@ -9,10 +9,16 @@
             {% endif %}
             <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
              <a class="btn btn-default" href="{% url 'post_dlt' pk=post.pk %}"><span class="glyphicon glyphicon-trash"></span></a>
+            <div>
+                <span class="post_author">Автор: {{ post.author }} </span>
+                <span class="post_date">  {{ post.published_date }} </span>
+                <span class="post_category">  {{ post.category }} </span>
+            </div> 
             <h1>{{ post.title }}</h1>
             <p>{{ post.text|linebreaks }}</p>
             
         </div>
+    
     <div id="disqus_thread"></div>
         <script>
         /**
@@ -21,8 +27,8 @@
         */
         
         var disqus_config = function () {
-        this.page.url = 'http://127.0.0.1:8000/post/4/'; // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = {{ post.id }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://http://vberesnev.pythonanywhere.com/post/{{ post.pk }}/'; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '{{ post.pk }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
         
         (function() { // DON'T EDIT BELOW THIS LINE
